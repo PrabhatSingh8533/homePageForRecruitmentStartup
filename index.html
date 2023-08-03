@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireNow - Your Hiring Platform</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .jumbotron {
+            background: linear-gradient(to bottom, #007bff, #0056b3);
+            color: #fff;
+            padding: 4rem 0;
+            border-radius: 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .jumbotron p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .card {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            outline: 2px solid #0056b3;
+            background: linear-gradient(45deg, #68a5e7, #68a5e7);
+            color: white;
+        }
+
+
+
+        .contact-form {
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .contact-form label {
+            font-size: 1.2rem;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(45deg, #007bff, #00ccaa);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #0056b3;
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            color: #007bff;
+        }
+
+        .icon-box p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 767px) {
+            .navbar-collapse {
+                text-align: center;
+            }
+
+            .navbar-nav {
+                display: inline-block;
+            }
+
+            .navbar-nav .nav-item {
+                display: block;
+                /* Change display to block to stack items vertically */
+                margin: 10px 0;
+                /* Add vertical margin between the items */
+            }
+
+        }
+
+
+        /* Add custom CSS for logos */
+        #companyPartnerships .col-6 {
+            display: inline-block;
+            vertical-align: middle;
+            height: 100px;
+            /* Set a fixed height for the logo containers */
+        }
+
+        @keyframes runLogos {
+            0% {
+                transform: translateX(100%);
+                /* Start from right edge */
+            }
+
+            100% {
+                transform: translateX(-100%);
+                /* Move to left edge */
+            }
+        }
+
+        /* Apply the alternating animation to all logos */
+        #companyPartnerships .col-6 {
+            animation: runLogos 10s linear infinite alternate;
+            margin: 15px 15px;
+        }
+
+        #companyPartnerships img {
+            max-height: 100%;
+            /* Make the logos fit the container's height */
+            object-fit: contain;
+            /* Scale the logos without distorting aspect ratio */
+        }
+
+
+
+
+        /* Style for carousel arrows */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            /* Change the arrow color here */
+            filter: invert(100%);
+            /* Replace invert(100%) with the color of your choice */
+        }
+
+
+        /* Back to Top Button Styles */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            /* Replace with the desired background color */
+            color: #ffffff;
+            /* Replace with the desired icon color */
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #backToTopBtn:hover {
+            background-color: #0056b3;
+            /* Replace with the desired background color on hover */
+        }
+
+        .cards-vertical-margin {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <h1>HireNow</h1>
+        </a>
+        <!-- Toggle button for collapsed menu -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Add navigation links if needed -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary mr-2" data-toggle="modal"
+                        data-target="#jobSeekerModal">
+                        Register as Job Seeker
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#loginModal">
+                        Login
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                        data-target="#signupModal">
+                        Sign Up
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Job Seeker Registration Modal -->
+        <div class="modal fade" id="jobSeekerModal" tabindex="-1" role="dialog" aria-labelledby="jobSeekerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="jobSeekerModalLabel">Job Seeker Registration</h5> <button
+                            type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                                aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"> <!-- Job Seeker Registration Form -->
+                        <form action="#" method="post">
+                            <div class="form-group"> <label for="fullName">Full Name</label> <input type="text"
+                                    id="fullName" name="fullName" class="form-control" required> </div>
+                            <div class="form-group"> <label for="email">Email</label> <input type="email" id="email"
+                                    name="email" class="form-control" required> </div>
+                            <div class="form-group"> <label for="phone">Phone</label> <input type="tel" id="phone"
+                                    name="phone" class="form-control" required> </div>
+                            <div class="form-group"> <label for="resume">Upload Resume</label> <input type="file"
+                                    id="resume" name="resume" class="form-control-file" required> </div> <button
+                                type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5> <button type="button" class="close"
+                            data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body"> <!-- Login Form -->
+                        <form action="#" method="post">
+                            <div class="form-group"> <label for="loginEmail">Email</label> <input type="email"
+                                    id="loginEmail" name="loginEmail" class="form-control" required> </div>
+                            <div class="form-group"> <label for="loginPassword">Password</label> <input type="password"
+                                    id="loginPassword" name="loginPassword" class="form-control" required> </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <hr> <button type="button" class="btn  btn-block"> <img
+                                    src="https://talentdrop.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogle.f99004c5.png&w=32&q=75"
+                                    alt="Google Logo"> Login with Google </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5> <button type="button" class="close"
+                            data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body"> <!-- Signup Form -->
+                        <form action="#" method="post">
+                            <div class="form-group"> <label for="signupName">Full Name</label> <input type="text"
+                                    id="signupName" name="signupName" class="form-control" required> </div>
+                            <div class="form-group"> <label for="signupEmail">Email</label> <input type="email"
+                                    id="signupEmail" name="signupEmail" class="form-control" required> </div>
+                            <div class="form-group"> <label for="signupPassword">Password</label> <input type="password"
+                                    id="signupPassword" name="signupPassword" class="form-control" required> </div>
+                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                            <hr> <button type="button" class="btn btn-block"> <img
+                                    src="https://talentdrop.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogle.f99004c5.png&w=32&q=75"
+                                    alt="Google Logo"> Signup with Google </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="jumbotron">
+        <div class="container">
+            <h1>Welcome to HireNow</h1>
+            <p class="lead">Your one-stop platform for hiring top talent</p>
+            <a href="#services" class="btn btn-primary">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card ">
+                        <div class="card-body">
+                            <div class="icon-box">&#128161;</div>
+                            <h5 class="card-title">Find Top Talent</h5>
+                            <p class="card-text">Explore our extensive database to find the perfect candidates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="icon-box">&#128221;</div>
+                            <h5 class="card-title">Post Job Listings</h5>
+                            <p class="card-text">Easily create and publish job listings to attract the best talent.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="icon-box">&#127891;</div>
+                            <h5 class="card-title">Expert Support</h5>
+                            <p class="card-text">Get dedicated support from our team throughout the hiring process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title text-center">How It Works</h2>
+            <div class="row">
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="icon-box">&#128197;</div>
+                            <h5 class="card-title">Create an Account</h5>
+                            <p class="card-text">Sign up and create your company account in just a few steps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="icon-box">&#128221;</div>
+                            <h5 class="card-title">Post Jobs</h5>
+                            <p class="card-text">Add job listings with details about the roles and requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 cards-vertical-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="icon-box">&#128269;</div>
+                            <h5 class="card-title">Discover Talent</h5>
+                            <p class="card-text">Browse through qualified candidates and shortlist your favorites.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="clientTestimonials" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">What Our Clients Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- First testimonial -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"HireNow helped us find the best-fit candidates for our
+                                        team. Excellent
+                                        platform!"</p>
+                                    <p class="client-name">John Doe</p>
+                                    <p class="client-designation">HR Manager at ABC Tech</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second testimonial -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"The user-friendly interface made the hiring process
+                                        seamless. Highly
+                                        recommended."</p>
+                                    <p class="client-name">Jane Smith</p>
+                                    <p class="client-designation">Jane Smith, CEO at XYZ Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third testimonial -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"HireNow's support team was extremely helpful
+                                        throughout. Great
+                                        experience!"</p>
+                                    <p class="client-name">James Johnson</p>
+                                    <p class="client-designation">CTO at LMN Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more testimonials as needed -->
+                </div>
+
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- Company Partnership -->
+
+    <section id="companyPartnerships" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Company Partnerships</h2>
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
+                        alt="Google Logo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://static.vecteezy.com/system/resources/previews/019/766/223/original/amazon-logo-amazon-icon-transparent-free-png.png"
+                        alt="Amazon Logo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png" alt="Meta Logo"
+                        class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7UM5ZqG-T9yN8Y3oaFsJqsLMfECt3M1BFuQ&usqp=CAU"
+                        alt="Netflix Logo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAAAaVBMVEXyUCIApO9/ugD/uQD////xQQD83de/25d5twCozm76xr243vkAn+4Qp+//tQDV6/vi7tL/5bj/25f/zm7/xEvxMgC82ZFwswCizGP+8vDt9OLv9/7/8dn/7cwAme3/y2X/36T/wkH/1Yby/cM8AAABMUlEQVR4nO3PSQ6CQBRAwVbBWZzFWfH+h3Qnujc/aVLvAi+VUlTlsPg0GveDmoT5AAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/wkso9p/AQ/1OKb6mKZhnVrgeRXVORUdDzD3AHMPMPcAc6/7wFlYl/Z6XUd1S/Oo7ssWuKmieqReVPMf4CCoLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBgB4HVNi2i+gY+m11MzesNECim7uqRJqUAAAAASUVORK5CYII="
+                        alt="Microsoft Logo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAazafiWiEDZc4wDZ6pSbidJPw4CTOuLwSBA&usqp=CAU"
+                        alt="Netflix Logo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx0QKpBj9VlvuS4I0hgB-ifAXeKGwqZc0eQQ&usqp=CAU"
+                        alt="Netflix Logo" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section class="bg-gradient py-5">
+        <div class="container">
+            <h2 class="section-title text-center text-white">Contact Us</h2>
+            <p class="text-center text-white">Have questions or want to know more? Reach out to us.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name" class="text-black">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-black">Your Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="text-black">Message</label>
+                                <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+
+
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <h2>HireNow</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> A-205, 9th Floor, Sovereign Corporate Tower,
+                        Sector-136, Noida, Uttar Pradesh - 201305</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@example.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: +1 123-456-7890</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h4>Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2023 Your Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Add Bootstrap CSS and jQuery -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Add Bootstrap JS and Popper.js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script>
+        // Show or hide the "Back to Top" button based on the user's scroll position
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("backToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("backToTopBtn").style.display = "none";
+            }
+        };
+
+        // Scroll to the top of the page when the button is clicked
+        document.getElementById("backToTopBtn").addEventListener("click", function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        });
+    </script>
+</body>
+
+</html>
